@@ -1,0 +1,16 @@
+:root {
+  --theme-name: "king-deigo";
+  --color-background: #101411;
+  --color-surface: #171d19;
+  --color-panel: #202821;
+  --color-panel-strong: #293329;
+  --color-primary: #d7352a;
+  --color-primary-dark: #9f211a;
+  --color-accent: #e1b845;
+  --color-accent-2: #2fbf72;
+  --color-border: #46503f;
+  --image-main-background: none;
+  --image-hall-background: none;
+  --image-result-background: none;
+  --image-machine-panel: none;
+}

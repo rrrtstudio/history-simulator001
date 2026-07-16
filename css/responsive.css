@@ -1,0 +1,115 @@
+@media (max-width: 760px) {
+  .app-shell {
+    padding: var(--space-3);
+  }
+
+  .screen-panel {
+    min-height: calc(100svh - var(--space-3) * 2);
+  }
+
+  .title-screen {
+    min-height: calc(100svh - var(--space-3) * 2);
+  }
+
+  .status-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric-grid,
+  .machine-data-focus,
+  .two-column,
+  .entry-grid,
+  .hint-blocks {
+    grid-template-columns: 1fr;
+  }
+
+  .machine-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .machine-summary-grid .metric-compact:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .metric-wide {
+    grid-column: span 1;
+  }
+
+  .machine-hero {
+    align-items: start;
+    min-height: 96px;
+    padding: var(--space-4);
+  }
+
+  .machine-title-nav {
+    grid-template-columns: 44px minmax(0, auto) 44px;
+  }
+
+  .action-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .button-play {
+    grid-column: span 2;
+    order: -1;
+  }
+
+  .action-bar-review {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .slump-graph {
+    height: 220px;
+  }
+
+  .machine-graph-panel {
+    min-height: auto;
+  }
+
+  .machine-graph-panel .slump-graph {
+    min-height: 230px;
+  }
+}
+
+@media (max-width: 420px) {
+  .role-grid,
+  .hint-grid,
+  .mini-grid,
+  .split-actions,
+  .retro-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .status-bar {
+    font-size: 0.95rem;
+  }
+
+  .machine-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
+
+  .metric-compact {
+    padding: var(--space-2);
+  }
+
+  .metric-compact strong {
+    font-size: 0.95rem;
+  }
+
+  .button {
+    padding-inline: 0.7rem;
+  }
+
+  .final-summary-grid {
+    gap: var(--space-2);
+  }
+
+  .final-summary-grid .metric {
+    padding: var(--space-2);
+  }
+
+  .final-summary-grid .metric strong {
+    font-size: 0.9rem;
+  }
+}

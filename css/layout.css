@@ -1,0 +1,236 @@
+.app-shell {
+  width: min(1120px, 100%);
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: var(--space-4);
+}
+
+.screen-panel,
+.game-view {
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+.title-screen {
+  position: relative;
+  display: grid;
+  min-height: calc(100svh - var(--space-4) * 2);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background:
+    var(--image-title-background, none),
+    linear-gradient(160deg, #08100d 0%, #14231a 52%, #070807 100%);
+}
+
+.title-screen__background {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.44)),
+    radial-gradient(circle at center 18%, rgba(225, 184, 69, 0.16), transparent 24rem);
+  pointer-events: none;
+}
+
+.title-screen__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-5);
+  place-items: center;
+  align-content: center;
+  padding: var(--space-6);
+  text-align: center;
+}
+
+.title-screen__eyebrow {
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.title-screen__logo {
+  max-width: 12ch;
+  color: var(--color-text);
+  font-size: clamp(2.5rem, 11vw, 5rem);
+  line-height: 1.05;
+}
+
+.title-screen__play-button {
+  width: min(280px, 100%);
+}
+
+.screen-panel {
+  display: grid;
+  gap: var(--space-5);
+  min-height: calc(100svh - var(--space-4) * 2);
+  align-content: center;
+}
+
+.start-panel {
+  text-align: center;
+}
+
+.brand-block,
+.section-heading {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.brand-block h1 {
+  color: var(--color-accent);
+  font-size: clamp(2.3rem, 11vw, 5rem);
+  line-height: 1;
+}
+
+.section-heading h1,
+.machine-hero h1 {
+  font-size: clamp(1.8rem, 6vw, 3.3rem);
+  line-height: 1.1;
+}
+
+.machine-title-nav {
+  display: inline-grid;
+  grid-template-columns: minmax(44px, auto) auto minmax(44px, auto);
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.subhead {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+.game-view {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.status-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: rgba(16, 20, 17, 0.94);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  backdrop-filter: blur(10px);
+}
+
+.machine-hero {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 112px;
+  padding: var(--space-5);
+  background:
+    var(--image-machine-panel),
+    linear-gradient(135deg, rgba(215, 53, 42, 0.22), rgba(47, 191, 114, 0.08)),
+    var(--color-panel);
+  background-size: cover;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+}
+
+.machine-overview,
+.machine-data-focus {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.machine-data-focus {
+  grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.5fr);
+  align-items: stretch;
+}
+
+.machine-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.metric-compact {
+  gap: 2px;
+  padding: var(--space-2) var(--space-3);
+}
+
+.metric-compact strong {
+  font-size: 1rem;
+}
+
+.metric-compact em {
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.machine-graph-panel {
+  min-height: 300px;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.final-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-4);
+}
+
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.mini-grid,
+.role-grid,
+.hint-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.action-stack {
+  display: grid;
+  gap: var(--space-3);
+  width: min(420px, 100%);
+  margin: 0 auto;
+}
+
+.split-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.action-bar {
+  position: sticky;
+  bottom: var(--space-3);
+  display: grid;
+  grid-template-columns: 1fr 1.45fr 1fr 1fr;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: rgba(16, 20, 17, 0.94);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  backdrop-filter: blur(10px);
+}
+
+.action-bar-review {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
