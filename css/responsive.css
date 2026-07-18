@@ -35,10 +35,21 @@
     grid-column: span 1;
   }
 
-  .machine-hero {
-    align-items: start;
-    min-height: 96px;
-    padding: var(--space-4);
+  .machine-nav-strip {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2);
+  }
+
+  .machine-nav-strip .machine-title-nav,
+  .machine-nav-meta {
+    grid-column: auto;
+    justify-self: center;
+  }
+
+  .machine-nav-meta {
+    justify-content: center;
   }
 
   .machine-title-nav {

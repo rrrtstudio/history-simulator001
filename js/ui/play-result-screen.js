@@ -1,6 +1,6 @@
 import { SCREEN } from "../utils/constants.js";
 import { ROUND_END_REASON } from "../utils/constants.js";
-import { setScreen, bind } from "./screen-manager.js?v=20260716-pages-ready";
+import { setScreen, bind } from "./screen-manager.js?v=20260719-scroll-anchor";
 import {
   bonusLabel,
   formatCoins,

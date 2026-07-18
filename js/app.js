@@ -1,17 +1,17 @@
-import { TIME_CONFIG } from "./config/time-config.js?v=20260716-pages-ready";
-import { KING_DEIGO_SPEC } from "./specs/king-deigo-spec.js?v=20260716-pages-ready";
+import { TIME_CONFIG } from "./config/time-config.js?v=20260719-scroll-anchor";
+import { KING_DEIGO_SPEC } from "./specs/king-deigo-spec.js?v=20260719-scroll-anchor";
 import { createRandom } from "./core/random.js";
-import { playRound } from "./core/play-engine.js?v=20260716-pages-ready";
+import { playRound } from "./core/play-engine.js?v=20260719-scroll-anchor";
 import { closePlayerSegment } from "./core/player-graph.js";
-import { finishGame, createNewGame, hasFinishedSave, hasPlayableSave } from "./state/game-state.js?v=20260716-pages-ready";
+import { finishGame, createNewGame, hasFinishedSave, hasPlayableSave } from "./state/game-state.js?v=20260719-scroll-anchor";
 import { moveMachine } from "./state/machine-state.js";
-import { clearSavedGame, loadSavedGame, saveGame } from "./state/storage.js?v=20260716-pages-ready";
-import { ROUND_END_REASON } from "./utils/constants.js?v=20260716-pages-ready";
-import { SCREEN } from "./utils/constants.js?v=20260716-pages-ready";
-import { setScreen, bind } from "./ui/screen-manager.js?v=20260716-pages-ready";
-import { renderEntryScreen, renderStartScreen, renderTitleScreen } from "./ui/entry-screen.js?v=20260716-pages-ready";
-import { renderMachineScreen } from "./ui/machine-screen.js?v=20260716-pages-ready";
-import { renderFinalResultScreen } from "./ui/final-result-screen.js?v=20260716-pages-ready";
+import { clearSavedGame, loadSavedGame, saveGame } from "./state/storage.js?v=20260719-scroll-anchor";
+import { ROUND_END_REASON } from "./utils/constants.js?v=20260719-scroll-anchor";
+import { SCREEN } from "./utils/constants.js?v=20260719-scroll-anchor";
+import { setScreen, bind } from "./ui/screen-manager.js?v=20260719-scroll-anchor";
+import { renderEntryScreen, renderStartScreen, renderTitleScreen } from "./ui/entry-screen.js?v=20260719-scroll-anchor";
+import { renderMachineScreen } from "./ui/machine-screen.js?v=20260719-scroll-anchor";
+import { renderFinalResultScreen } from "./ui/final-result-screen.js?v=20260719-scroll-anchor";
 
 const root = document.querySelector("#app");
 const rng = createRandom();
@@ -89,13 +89,13 @@ function startNewGame(entryHour) {
   showMachineScreen();
 }
 
-function showMachineScreen() {
+function showMachineScreen({ preserveScroll = false, scrollPosition = null } = {}) {
   if (game.remainingGames <= 0 && !game.isFinished) {
     finishAndShowFinal("closed");
     return;
   }
   if (game.isFinished) {
-    showFinishedMachineScreen();
+    showFinishedMachineScreen({ preserveScroll, scrollPosition });
     return;
   }
   renderMachineScreen({
@@ -104,9 +104,11 @@ function showMachineScreen() {
     spec: KING_DEIGO_SPEC,
     roundNotice: lastRoundNotice,
     onPlay: playCurrentMachine,
-    onPrev: () => moveAndShow(-1),
-    onNext: () => moveAndShow(1),
-    onExit: showExitConfirm
+    onPrev: (position) => moveAndShow(-1, position),
+    onNext: (position) => moveAndShow(1, position),
+    onExit: showExitConfirm,
+    preserveScroll,
+    scrollPosition
   });
 }
 
@@ -127,12 +129,12 @@ function playCurrentMachine() {
   }
 }
 
-function moveAndShow(direction) {
+function moveAndShow(direction, scrollPosition = null) {
   lastRoundNotice = null;
   closePlayerSegment(game);
   moveMachine(game, direction);
   persistGame();
-  showMachineScreen();
+  showMachineScreen({ preserveScroll: true, scrollPosition });
 }
 
 function showExitConfirm() {
@@ -171,7 +173,7 @@ function showFinalResult() {
   });
 }
 
-function showFinishedMachineScreen() {
+function showFinishedMachineScreen({ preserveScroll = false, scrollPosition = null } = {}) {
   lastRoundNotice = null;
   persistGame();
   renderMachineScreen({
@@ -180,10 +182,12 @@ function showFinishedMachineScreen() {
     spec: KING_DEIGO_SPEC,
     roundNotice: null,
     reviewMode: true,
-    onPrev: () => moveFinishedAndShow(-1),
-    onNext: () => moveFinishedAndShow(1),
+    onPrev: (position) => moveFinishedAndShow(-1, position),
+    onNext: (position) => moveFinishedAndShow(1, position),
     onFinal: showFinalResult,
-    onExit: () => showResultExitConfirm(showFinishedMachineScreen)
+    onExit: () => showResultExitConfirm(showFinishedMachineScreen),
+    preserveScroll,
+    scrollPosition
   });
 }
 
@@ -204,10 +208,10 @@ function showResultExitConfirm(onCancel) {
   bind(root, "[data-action='cancel-result-exit']", "click", onCancel);
 }
 
-function moveFinishedAndShow(direction) {
+function moveFinishedAndShow(direction, scrollPosition = null) {
   moveMachine(game, direction);
   persistGame();
-  showFinishedMachineScreen();
+  showFinishedMachineScreen({ preserveScroll: true, scrollPosition });
 }
 
 function resetFinishedGameAndShowEntry() {
@@ -252,7 +256,7 @@ function renderBootError(error) {
         <h1>読み込みに失敗しました</h1>
       </div>
       <p class="empty-text">
-        保存データをクリアしても直らない場合は、GitHub Pages またはローカルサーバー経由で /history-simulator/ を開き直してください。
+        保存データをクリアしても直らない場合は、ページを再読み込みしてください。
       </p>
       <div class="action-stack">
         <button class="button button-primary" data-action="clear-save">保存データをクリア</button>

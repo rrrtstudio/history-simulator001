@@ -1,5 +1,5 @@
 import { getBonusPayoutValue, getRole } from "../specs/spec-interface.js";
-import { getGameFlagBonus, getGameFlagRole } from "./lottery-engine.js?v=20260716-pages-ready";
+import { getGameFlagBonus, getGameFlagRole } from "./lottery-engine.js?v=20260719-scroll-anchor";
 
 export function getNormalPayout(spec, roleId) {
   const role = getRole(spec, roleId);

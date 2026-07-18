@@ -1,9 +1,9 @@
-import { GAME_CONFIG } from "../config/game-config.js?v=20260716-pages-ready";
-import { getMaxGamesForEntry } from "../core/time-engine.js?v=20260716-pages-ready";
-import { generateMachines } from "../core/history-generator.js?v=20260716-pages-ready";
-import { createPlayerState } from "./player-state.js?v=20260716-pages-ready";
+import { GAME_CONFIG } from "../config/game-config.js?v=20260719-scroll-anchor";
+import { getMaxGamesForEntry } from "../core/time-engine.js?v=20260719-scroll-anchor";
+import { generateMachines } from "../core/history-generator.js?v=20260719-scroll-anchor";
+import { createPlayerState } from "./player-state.js?v=20260719-scroll-anchor";
 import { createId } from "../utils/helpers.js";
-import { ACTIVE_SPEC_ID, SCHEMA_VERSION } from "../utils/constants.js?v=20260716-pages-ready";
+import { ACTIVE_SPEC_ID, SCHEMA_VERSION } from "../utils/constants.js?v=20260719-scroll-anchor";
 
 export function createNewGame({ entryHour, spec, rng }) {
   const maxGames = getMaxGamesForEntry(entryHour);

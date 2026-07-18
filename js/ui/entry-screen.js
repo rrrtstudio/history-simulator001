@@ -1,5 +1,5 @@
-import { SCREEN } from "../utils/constants.js?v=20260716-pages-ready";
-import { setScreen, bind } from "./screen-manager.js?v=20260716-pages-ready";
+import { SCREEN } from "../utils/constants.js?v=20260719-scroll-anchor";
+import { setScreen, bind } from "./screen-manager.js?v=20260719-scroll-anchor";
 import { formatNumber } from "./formatters.js";
 
 export function renderTitleScreen({ root, onPlay }) {

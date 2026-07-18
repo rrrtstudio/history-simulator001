@@ -1,6 +1,6 @@
 import { SCREEN } from "../utils/constants.js";
-import { formatClockByGames } from "../core/time-engine.js?v=20260716-pages-ready";
-import { setScreen, bind } from "./screen-manager.js?v=20260716-pages-ready";
+import { formatClockByGames } from "../core/time-engine.js?v=20260719-scroll-anchor";
+import { setScreen, bind } from "./screen-manager.js?v=20260719-scroll-anchor";
 import { renderGraph } from "./graph-renderer.js";
 import {
   bonusLabel,
@@ -32,15 +32,20 @@ export function renderMachineScreen({
   onNext,
   onExit,
   onFinal,
-  reviewMode = false
+  reviewMode = false,
+  preserveScroll = false,
+  scrollPosition = null
 }) {
   const machine = game.machines[game.currentMachineIndex];
   const isReviewMode = Boolean(reviewMode || game.isFinished);
   setScreen(root, SCREEN.MACHINE, `
     <section class="game-view">
-      ${renderStatusBar(game)}
+      <div class="machine-sticky-header">
+        ${renderStatusBar(game)}
+        ${renderMachineNavigation(machine, game, { showSetting: isReviewMode })}
+      </div>
       ${renderRoundNotice(roundNotice)}
-      ${renderMachineOverview(machine, game, { showSetting: isReviewMode })}
+      ${renderMachineOverview(machine)}
 
       <section class="two-column">
         <div class="panel">
@@ -66,10 +71,23 @@ export function renderMachineScreen({
 
       ${renderMachineActions(isReviewMode)}
     </section>
-  `);
+  `, { preserveScroll, scrollPosition });
   renderGraph(root.querySelector("[data-graph]"), machine.graphPoints);
-  bind(root, "[data-action='prev']", "click", onPrev);
-  bind(root, "[data-action='next']", "click", onNext);
+  let navigationScrollPosition = null;
+  const rememberNavigationScroll = () => {
+    navigationScrollPosition = getScrollPosition();
+  };
+  root.querySelectorAll?.("[data-action='prev'], [data-action='next']").forEach((button) => {
+    button.addEventListener("pointerdown", rememberNavigationScroll, { passive: true });
+    button.addEventListener("touchstart", rememberNavigationScroll, { passive: true });
+  });
+  const consumeNavigationScroll = () => {
+    const position = navigationScrollPosition || getScrollPosition();
+    navigationScrollPosition = null;
+    return position;
+  };
+  bind(root, "[data-action='prev']", "click", () => onPrev?.(consumeNavigationScroll()));
+  bind(root, "[data-action='next']", "click", () => onNext?.(consumeNavigationScroll()));
   bind(root, "[data-action='exit']", "click", onExit);
   if (isReviewMode) {
     bind(root, "[data-action='final']", "click", onFinal);
@@ -78,22 +96,33 @@ export function renderMachineScreen({
   }
 }
 
-export function renderMachineOverview(machine, game, { showSetting = false } = {}) {
+function getScrollPosition() {
+  return {
+    x: Number(window.scrollX ?? window.pageXOffset ?? 0),
+    y: Number(window.scrollY ?? window.pageYOffset ?? 0)
+  };
+}
+
+export function renderMachineNavigation(machine, game, { showSetting = false } = {}) {
+  return `
+    <section class="machine-nav-strip" aria-label="台移動">
+      <div class="machine-title-nav" aria-label="台番号">
+        <button class="machine-title-nav__button" type="button" data-action="prev" aria-label="前の台へ移動">＜</button>
+        <h1>${machine.number}番台</h1>
+        <button class="machine-title-nav__button" type="button" data-action="next" aria-label="次の台へ移動">＞</button>
+      </div>
+      <div class="machine-nav-meta">
+        ${showSetting ? `<p class="machine-setting">設定${machine.hiddenSetting}</p>` : ""}
+        <div class="machine-count">${game.currentMachineIndex + 1} / ${game.machines.length}</div>
+      </div>
+    </section>
+  `;
+}
+
+export function renderMachineOverview(machine) {
   const maxAcquiredCoins = calculateMachineMaxAcquiredCoins(machine);
   return `
     <section class="machine-overview">
-      <section class="machine-hero">
-        <div>
-          <div class="machine-title-nav" aria-label="台番号">
-            <button class="machine-title-nav__button" type="button" data-action="prev" aria-label="前の台へ移動">＜</button>
-            <h1>${machine.number}番台</h1>
-            <button class="machine-title-nav__button" type="button" data-action="next" aria-label="次の台へ移動">＞</button>
-          </div>
-          ${showSetting ? `<p class="machine-setting">設定${machine.hiddenSetting}</p>` : ""}
-        </div>
-        <div class="machine-count">${game.currentMachineIndex + 1} / ${game.machines.length}</div>
-      </section>
-
       <section class="machine-data-focus">
         <div class="machine-summary-grid">
           <div class="metric metric-compact">

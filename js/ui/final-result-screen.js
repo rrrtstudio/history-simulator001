@@ -1,8 +1,8 @@
-import { SCREEN } from "../utils/constants.js?v=20260716-pages-ready";
-import { formatClockByGames } from "../core/time-engine.js?v=20260716-pages-ready";
+import { SCREEN } from "../utils/constants.js?v=20260719-scroll-anchor";
+import { formatClockByGames } from "../core/time-engine.js?v=20260719-scroll-anchor";
 import { calculateMachinePlayerResult, calculatePlayerResult } from "../core/result-calculator.js";
-import { calculateGraphStats } from "../core/graph-data.js?v=20260716-pages-ready";
-import { setScreen, bind } from "./screen-manager.js?v=20260716-pages-ready";
+import { calculateGraphStats } from "../core/graph-data.js?v=20260719-scroll-anchor";
+import { setScreen, bind } from "./screen-manager.js?v=20260719-scroll-anchor";
 import { renderGraph } from "./graph-renderer.js";
 import {
   formatBonusRate,

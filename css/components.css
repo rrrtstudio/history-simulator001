@@ -159,7 +159,11 @@
 }
 
 .machine-setting {
-  margin-top: var(--space-2);
+  margin: 0;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid rgba(225, 184, 69, 0.42);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.2);
   color: var(--color-accent);
   font-size: 1rem;
   font-weight: 900;
