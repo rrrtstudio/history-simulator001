@@ -348,3 +348,58 @@ th {
   font-size: 0.78rem;
   font-weight: 800;
 }
+
+.machine-list-scroll {
+  --machine-list-play-width: 46px;
+  --machine-list-machine-width: 74px;
+  --machine-list-setting-width: 56px;
+  position: relative;
+}
+
+.machine-list-table {
+  min-width: 840px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.machine-list-table th,
+.machine-list-table td {
+  padding-inline: 0.55rem;
+}
+
+.machine-list-table .sticky-col {
+  position: sticky;
+  background: rgb(32, 40, 33);
+  z-index: 2;
+}
+
+.machine-list-table thead .sticky-col {
+  background: rgb(41, 51, 41);
+  z-index: 4;
+}
+
+.machine-list-table .sticky-play {
+  left: 0;
+  width: var(--machine-list-play-width);
+  min-width: var(--machine-list-play-width);
+  text-align: center;
+}
+
+.machine-list-table .sticky-machine {
+  left: var(--machine-list-play-width);
+  width: var(--machine-list-machine-width);
+  min-width: var(--machine-list-machine-width);
+}
+
+.machine-list-table .sticky-setting {
+  left: calc(var(--machine-list-play-width) + var(--machine-list-machine-width));
+  width: var(--machine-list-setting-width);
+  min-width: var(--machine-list-setting-width);
+  box-shadow: 10px 0 14px rgba(0, 0, 0, 0.24);
+}
+
+.machine-list-table .machine-play-cell {
+  color: var(--color-accent);
+  font-weight: 900;
+}

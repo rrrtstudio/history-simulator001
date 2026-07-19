@@ -4,11 +4,11 @@ import {
   MACHINE_COUNT,
   REG_SIDE_LAMP_COLORS,
   SCHEMA_VERSION
-} from "./constants.js?v=20260719-scroll-anchor";
+} from "./constants.js?v=20260719-final-table";
 import { createCountRecord } from "./helpers.js";
-import { GAME_CONFIG } from "../config/game-config.js?v=20260719-scroll-anchor";
+import { GAME_CONFIG } from "../config/game-config.js?v=20260719-final-table";
 import { createDefaultChainState, createDefaultRetroStats } from "../core/chain-engine.js";
-import { createDefaultBonusRoleCounts } from "../core/history-generator.js?v=20260719-scroll-anchor";
+import { createDefaultBonusRoleCounts } from "../core/history-generator.js?v=20260719-final-table";
 import { createDefaultPlayerGraph, ensurePlayerGraph } from "../core/player-graph.js";
 
 export function isValidGameSave(value) {

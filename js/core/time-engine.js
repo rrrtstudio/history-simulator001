@@ -1,4 +1,4 @@
-import { TIME_CONFIG } from "../config/time-config.js?v=20260719-scroll-anchor";
+import { TIME_CONFIG } from "../config/time-config.js?v=20260719-final-table";
 
 export function getEntryOption(entryHour, timeConfig = TIME_CONFIG) {
   return timeConfig.entryOptions.find((option) => option.hour === Number(entryHour)) || null;

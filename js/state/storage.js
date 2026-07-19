@@ -1,7 +1,7 @@
-import { STORAGE_KEY } from "../utils/constants.js?v=20260719-scroll-anchor";
+import { STORAGE_KEY } from "../utils/constants.js?v=20260719-final-table";
 import { deepClone } from "../utils/helpers.js";
-import { isValidGameSave, migrateGameSave } from "../utils/validation.js?v=20260719-scroll-anchor";
-import { touchGame } from "./game-state.js?v=20260719-scroll-anchor";
+import { isValidGameSave, migrateGameSave } from "../utils/validation.js?v=20260719-final-table";
+import { touchGame } from "./game-state.js?v=20260719-final-table";
 
 export function loadSavedGame() {
   try {

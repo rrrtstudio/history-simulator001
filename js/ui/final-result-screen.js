@@ -1,8 +1,8 @@
-import { SCREEN } from "../utils/constants.js?v=20260719-scroll-anchor";
-import { formatClockByGames } from "../core/time-engine.js?v=20260719-scroll-anchor";
+import { SCREEN } from "../utils/constants.js?v=20260719-final-table";
+import { formatClockByGames } from "../core/time-engine.js?v=20260719-final-table";
 import { calculateMachinePlayerResult, calculatePlayerResult } from "../core/result-calculator.js";
-import { calculateGraphStats } from "../core/graph-data.js?v=20260719-scroll-anchor";
-import { setScreen, bind } from "./screen-manager.js?v=20260719-scroll-anchor";
+import { calculateGraphStats } from "../core/graph-data.js?v=20260719-final-table";
+import { setScreen, bind } from "./screen-manager.js?v=20260719-final-table";
 import { renderGraph } from "./graph-renderer.js";
 import {
   formatBonusRate,
@@ -77,26 +77,35 @@ export function renderFinalResultScreen({ root, game, onReplay, onExit, onViewMa
 
       <section class="panel table-panel">
         <div class="panel-heading"><h2>10台一覧</h2></div>
-        <div class="table-scroll">
-          <table>
+        <div class="table-scroll machine-list-scroll">
+          <table class="machine-list-table">
             <thead>
               <tr>
-                <th>台</th><th>設定</th><th>総G</th><th>BIG</th><th>BIG確率</th><th>REG</th><th>REG確率</th><th>合成</th><th>台の差枚</th><th>遊技</th>
+                <th class="sticky-col sticky-play">遊技</th>
+                <th class="sticky-col sticky-machine">台番号</th>
+                <th class="sticky-col sticky-setting">設定</th>
+                <th>差枚</th>
+                <th>総G</th>
+                <th>BIG</th>
+                <th>BIG確率</th>
+                <th>REG</th>
+                <th>REG確率</th>
+                <th>合成</th>
               </tr>
             </thead>
             <tbody>
               ${game.machines.map((machine) => `
                 <tr>
-                  <td>${machine.number}</td>
-                  <td>${machine.hiddenSetting}</td>
+                  <td class="sticky-col sticky-play machine-play-cell" aria-label="${machine.played ? "遊技済み" : "未遊技"}">${machine.played ? "○" : "×"}</td>
+                  <td class="sticky-col sticky-machine">${machine.number}</td>
+                  <td class="sticky-col sticky-setting">${machine.hiddenSetting}</td>
+                  <td class="${machine.currentDifference >= 0 ? "is-plus" : "is-minus"}">${formatSignedCoins(machine.currentDifference)}</td>
                   <td>${formatNumber(machine.currentTotalGames)}</td>
                   <td>${formatNumber(machine.currentBig)}</td>
                   <td>${formatBonusRate(machine.currentBig, machine.currentTotalGames)}</td>
                   <td>${formatNumber(machine.currentReg)}</td>
                   <td>${formatBonusRate(machine.currentReg, machine.currentTotalGames)}</td>
                   <td>${formatBonusRate(machine.currentBig + machine.currentReg, machine.currentTotalGames)}</td>
-                  <td>${formatSignedCoins(machine.currentDifference)}</td>
-                  <td>${machine.played ? "あり" : "なし"}</td>
                 </tr>
               `).join("")}
             </tbody>
