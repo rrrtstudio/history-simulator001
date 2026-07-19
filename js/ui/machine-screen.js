@@ -1,6 +1,6 @@
 import { SCREEN } from "../utils/constants.js";
-import { formatClockByGames } from "../core/time-engine.js?v=20260719-final-table";
-import { setScreen, bind } from "./screen-manager.js?v=20260719-final-table";
+import { formatClockByGames } from "../core/time-engine.js?v=20260719-final-table-compact";
+import { setScreen, bind } from "./screen-manager.js?v=20260719-final-table-compact";
 import { renderGraph } from "./graph-renderer.js";
 import {
   bonusLabel,

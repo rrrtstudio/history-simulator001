@@ -1,11 +1,11 @@
 import { HALL_CONFIG } from "../config/hall-config.js";
-import { GAME_CONFIG } from "../config/game-config.js?v=20260719-final-table";
-import { BIG_END_FEATHER_COLORS, MACHINE_COUNT, REG_SIDE_LAMP_COLORS } from "../utils/constants.js?v=20260719-final-table";
+import { GAME_CONFIG } from "../config/game-config.js?v=20260719-final-table-compact";
+import { BIG_END_FEATHER_COLORS, MACHINE_COUNT, REG_SIDE_LAMP_COLORS } from "../utils/constants.js?v=20260719-final-table-compact";
 import { createCountRecord } from "../utils/helpers.js";
 import { resolveBySetting } from "../specs/spec-interface.js";
-import { drawDistribution, drawGameFlag, drawSetting, getGameFlagBonus, getGameFlagProbabilities, getGameFlagRole } from "./lottery-engine.js?v=20260719-final-table";
-import { getBonusDigestConfig, getBonusPayout, getNormalPayout } from "./payout-engine.js?v=20260719-final-table";
-import { createGraphPoint } from "./graph-data.js?v=20260719-final-table";
+import { drawDistribution, drawGameFlag, drawSetting, getGameFlagBonus, getGameFlagProbabilities, getGameFlagRole } from "./lottery-engine.js?v=20260719-final-table-compact";
+import { getBonusDigestConfig, getBonusPayout, getNormalPayout } from "./payout-engine.js?v=20260719-final-table-compact";
+import { createGraphPoint } from "./graph-data.js?v=20260719-final-table-compact";
 import { createDefaultChainState, createDefaultRetroStats, expireChainIfNeeded, resolveBonusChain } from "./chain-engine.js";
 
 export function generateMachines({ spec, entryHour, rng, hallConfig = HALL_CONFIG, gameConfig = GAME_CONFIG }) {

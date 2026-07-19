@@ -1,9 +1,9 @@
-import { GAME_CONFIG } from "../config/game-config.js?v=20260719-final-table";
-import { getMaxGamesForEntry } from "../core/time-engine.js?v=20260719-final-table";
-import { generateMachines } from "../core/history-generator.js?v=20260719-final-table";
-import { createPlayerState } from "./player-state.js?v=20260719-final-table";
+import { GAME_CONFIG } from "../config/game-config.js?v=20260719-final-table-compact";
+import { getMaxGamesForEntry } from "../core/time-engine.js?v=20260719-final-table-compact";
+import { generateMachines } from "../core/history-generator.js?v=20260719-final-table-compact";
+import { createPlayerState } from "./player-state.js?v=20260719-final-table-compact";
 import { createId } from "../utils/helpers.js";
-import { ACTIVE_SPEC_ID, SCHEMA_VERSION } from "../utils/constants.js?v=20260719-final-table";
+import { ACTIVE_SPEC_ID, SCHEMA_VERSION } from "../utils/constants.js?v=20260719-final-table-compact";
 
 export function createNewGame({ entryHour, spec, rng }) {
   const maxGames = getMaxGamesForEntry(entryHour);

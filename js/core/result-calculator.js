@@ -1,4 +1,4 @@
-import { GAME_CONFIG } from "../config/game-config.js?v=20260719-final-table";
+import { GAME_CONFIG } from "../config/game-config.js?v=20260719-final-table-compact";
 import { safeDivide } from "../utils/helpers.js";
 
 export function calculatePlayerResult(game, config = GAME_CONFIG) {

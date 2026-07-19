@@ -1,5 +1,5 @@
 import { createGraphPoint } from "./graph-data.js";
-import { formatClockByGames } from "./time-engine.js?v=20260719-final-table";
+import { formatClockByGames } from "./time-engine.js?v=20260719-final-table-compact";
 
 export function createDefaultPlayerGraph() {
   return {

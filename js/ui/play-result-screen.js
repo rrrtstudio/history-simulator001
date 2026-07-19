@@ -1,6 +1,6 @@
 import { SCREEN } from "../utils/constants.js";
 import { ROUND_END_REASON } from "../utils/constants.js";
-import { setScreen, bind } from "./screen-manager.js?v=20260719-final-table";
+import { setScreen, bind } from "./screen-manager.js?v=20260719-final-table-compact";
 import {
   bonusLabel,
   formatCoins,

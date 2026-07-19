@@ -1,5 +1,5 @@
-import { SCREEN } from "../utils/constants.js?v=20260719-final-table";
-import { setScreen, bind } from "./screen-manager.js?v=20260719-final-table";
+import { SCREEN } from "../utils/constants.js?v=20260719-final-table-compact";
+import { setScreen, bind } from "./screen-manager.js?v=20260719-final-table-compact";
 import { formatNumber } from "./formatters.js";
 
 export function renderTitleScreen({ root, onPlay }) {

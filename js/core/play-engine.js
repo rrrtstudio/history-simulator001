@@ -1,10 +1,10 @@
-import { GAME_CONFIG } from "../config/game-config.js?v=20260719-final-table";
-import { ROUND_END_REASON } from "../utils/constants.js?v=20260719-final-table";
-import { drawGameFlag, getGameFlagBonus, getGameFlagRole, isCherryDuplicateFlag } from "./lottery-engine.js?v=20260719-final-table";
-import { getBonusDigestConfig, getBonusPayout, getNormalPayout } from "./payout-engine.js?v=20260719-final-table";
-import { appendMachineGraphPoint } from "./graph-data.js?v=20260719-final-table";
+import { GAME_CONFIG } from "../config/game-config.js?v=20260719-final-table-compact";
+import { ROUND_END_REASON } from "../utils/constants.js?v=20260719-final-table-compact";
+import { drawGameFlag, getGameFlagBonus, getGameFlagRole, isCherryDuplicateFlag } from "./lottery-engine.js?v=20260719-final-table-compact";
+import { getBonusDigestConfig, getBonusPayout, getNormalPayout } from "./payout-engine.js?v=20260719-final-table-compact";
+import { appendMachineGraphPoint } from "./graph-data.js?v=20260719-final-table-compact";
 import { calculateStopLine, ensurePlayableCoins, isInStopRange } from "./coin-engine.js";
-import { createDefaultHintCounts, drawBigBonusDetails, drawBonusHints } from "./history-generator.js?v=20260719-final-table";
+import { createDefaultHintCounts, drawBigBonusDetails, drawBonusHints } from "./history-generator.js?v=20260719-final-table-compact";
 import { expireChainIfNeeded, resolveBonusChain } from "./chain-engine.js";
 import { recordPlayerGraphPoint, startPlayerSegment } from "./player-graph.js";
 

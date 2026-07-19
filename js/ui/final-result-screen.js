@@ -1,8 +1,8 @@
-import { SCREEN } from "../utils/constants.js?v=20260719-final-table";
-import { formatClockByGames } from "../core/time-engine.js?v=20260719-final-table";
+import { SCREEN } from "../utils/constants.js?v=20260719-final-table-compact";
+import { formatClockByGames } from "../core/time-engine.js?v=20260719-final-table-compact";
 import { calculateMachinePlayerResult, calculatePlayerResult } from "../core/result-calculator.js";
-import { calculateGraphStats } from "../core/graph-data.js?v=20260719-final-table";
-import { setScreen, bind } from "./screen-manager.js?v=20260719-final-table";
+import { calculateGraphStats } from "../core/graph-data.js?v=20260719-final-table-compact";
+import { setScreen, bind } from "./screen-manager.js?v=20260719-final-table-compact";
 import { renderGraph } from "./graph-renderer.js";
 import {
   formatBonusRate,
@@ -79,11 +79,23 @@ export function renderFinalResultScreen({ root, game, onReplay, onExit, onViewMa
         <div class="panel-heading"><h2>10台一覧</h2></div>
         <div class="table-scroll machine-list-scroll">
           <table class="machine-list-table">
+            <colgroup>
+              <col class="machine-col-play">
+              <col class="machine-col-machine">
+              <col class="machine-col-setting">
+              <col class="machine-col-difference">
+              <col>
+              <col>
+              <col>
+              <col>
+              <col>
+              <col>
+            </colgroup>
             <thead>
               <tr>
-                <th class="sticky-col sticky-play">遊技</th>
-                <th class="sticky-col sticky-machine">台番号</th>
-                <th class="sticky-col sticky-setting">設定</th>
+                <th class="sticky-col sticky-play"><span class="machine-list-label-full">遊技</span><span class="machine-list-label-short">遊</span></th>
+                <th class="sticky-col sticky-machine"><span class="machine-list-label-full">台番号</span><span class="machine-list-label-short">台</span></th>
+                <th class="sticky-col sticky-setting"><span class="machine-list-label-full">設定</span><span class="machine-list-label-short">設</span></th>
                 <th>差枚</th>
                 <th>総G</th>
                 <th>BIG</th>

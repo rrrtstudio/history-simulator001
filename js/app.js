@@ -1,17 +1,17 @@
-import { TIME_CONFIG } from "./config/time-config.js?v=20260719-final-table";
-import { KING_DEIGO_SPEC } from "./specs/king-deigo-spec.js?v=20260719-final-table";
+import { TIME_CONFIG } from "./config/time-config.js?v=20260719-final-table-compact";
+import { KING_DEIGO_SPEC } from "./specs/king-deigo-spec.js?v=20260719-final-table-compact";
 import { createRandom } from "./core/random.js";
-import { playRound } from "./core/play-engine.js?v=20260719-final-table";
+import { playRound } from "./core/play-engine.js?v=20260719-final-table-compact";
 import { closePlayerSegment } from "./core/player-graph.js";
-import { finishGame, createNewGame, hasFinishedSave, hasPlayableSave } from "./state/game-state.js?v=20260719-final-table";
+import { finishGame, createNewGame, hasFinishedSave, hasPlayableSave } from "./state/game-state.js?v=20260719-final-table-compact";
 import { moveMachine } from "./state/machine-state.js";
-import { clearSavedGame, loadSavedGame, saveGame } from "./state/storage.js?v=20260719-final-table";
-import { ROUND_END_REASON } from "./utils/constants.js?v=20260719-final-table";
-import { SCREEN } from "./utils/constants.js?v=20260719-final-table";
-import { setScreen, bind } from "./ui/screen-manager.js?v=20260719-final-table";
-import { renderEntryScreen, renderStartScreen, renderTitleScreen } from "./ui/entry-screen.js?v=20260719-final-table";
-import { renderMachineScreen } from "./ui/machine-screen.js?v=20260719-final-table";
-import { renderFinalResultScreen } from "./ui/final-result-screen.js?v=20260719-final-table";
+import { clearSavedGame, loadSavedGame, saveGame } from "./state/storage.js?v=20260719-final-table-compact";
+import { ROUND_END_REASON } from "./utils/constants.js?v=20260719-final-table-compact";
+import { SCREEN } from "./utils/constants.js?v=20260719-final-table-compact";
+import { setScreen, bind } from "./ui/screen-manager.js?v=20260719-final-table-compact";
+import { renderEntryScreen, renderStartScreen, renderTitleScreen } from "./ui/entry-screen.js?v=20260719-final-table-compact";
+import { renderMachineScreen } from "./ui/machine-screen.js?v=20260719-final-table-compact";
+import { renderFinalResultScreen } from "./ui/final-result-screen.js?v=20260719-final-table-compact";
 
 const root = document.querySelector("#app");
 const rng = createRandom();

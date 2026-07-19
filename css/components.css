@@ -353,6 +353,7 @@ th {
   --machine-list-play-width: 46px;
   --machine-list-machine-width: 74px;
   --machine-list-setting-width: 56px;
+  --machine-list-difference-width: 104px;
   position: relative;
 }
 
@@ -366,6 +367,26 @@ th {
 .machine-list-table th,
 .machine-list-table td {
   padding-inline: 0.55rem;
+}
+
+.machine-list-table .machine-col-play {
+  width: var(--machine-list-play-width);
+}
+
+.machine-list-table .machine-col-machine {
+  width: var(--machine-list-machine-width);
+}
+
+.machine-list-table .machine-col-setting {
+  width: var(--machine-list-setting-width);
+}
+
+.machine-list-table .machine-col-difference {
+  width: var(--machine-list-difference-width);
+}
+
+.machine-list-label-short {
+  display: none;
 }
 
 .machine-list-table .sticky-col {
